@@ -81,7 +81,7 @@ export function HeroSection({ backgroundImage, translations: t, currentLanguage,
                 <div className="relative w-20 md:w-24 bg-gray-900 rounded-[1.5rem] md:rounded-[2rem] p-2 shadow-xl">
                   <div className="bg-white rounded-[1rem] md:rounded-[1.5rem] overflow-hidden">
                     <img 
-                      src="/assets/images/app_entry.png" 
+                      src="assets/images/app_entry.png" 
                       alt="龍門閉鎖陣地語音導覽 App"
                       className="w-full h-auto"
                     />
@@ -94,7 +94,7 @@ export function HeroSection({ backgroundImage, translations: t, currentLanguage,
                 <div className="relative w-20 md:w-24 bg-gray-900 rounded-[1.5rem] md:rounded-[2rem] p-2 shadow-xl">
                   <div className="bg-white rounded-[1rem] md:rounded-[1.5rem] overflow-hidden">
                     <img 
-                      src="/assets/images/app_maps.png" 
+                      src="assets/images/app_maps.png" 
                       alt="地圖導覽"
                       className="w-full h-auto"
                     />
@@ -107,7 +107,7 @@ export function HeroSection({ backgroundImage, translations: t, currentLanguage,
                 <div className="relative w-20 md:w-24 bg-gray-900 rounded-[1.5rem] md:rounded-[2rem] p-2 shadow-xl">
                   <div className="bg-white rounded-[1rem] md:rounded-[1.5rem] overflow-hidden">
                     <img 
-                      src="/assets/images/app_sights.png" 
+                      src="assets/images/app_sights.png" 
                       alt="景點介紹"
                       className="w-full h-auto"
                     />
@@ -120,7 +120,7 @@ export function HeroSection({ backgroundImage, translations: t, currentLanguage,
                 <div className="relative w-20 md:w-24 bg-gray-900 rounded-[1.5rem] md:rounded-[2rem] p-2 shadow-xl">
                   <div className="bg-white rounded-[1rem] md:rounded-[1.5rem] overflow-hidden">
                     <img 
-                      src="/assets/images/app_langs.png" 
+                      src="assets/images/app_langs.png" 
                       alt="多語言支援"
                       className="w-full h-auto"
                     />
