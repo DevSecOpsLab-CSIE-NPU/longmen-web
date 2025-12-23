@@ -1,11 +1,16 @@
 import { Apple, Download } from 'lucide-react';
 import { Button } from './ui/button';
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { translations } from '../i18n/translations';
 
 interface HeroSectionProps {
   backgroundImage: string;
+  translations: typeof translations.zh;
+  currentLanguage: 'zh' | 'en';
+  onLanguageChange: (language: 'zh' | 'en') => void;
 }
 
-export function HeroSection({ backgroundImage }: HeroSectionProps) {
+export function HeroSection({ backgroundImage, translations: t, currentLanguage, onLanguageChange }: HeroSectionProps) {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -23,13 +28,19 @@ export function HeroSection({ backgroundImage }: HeroSectionProps) {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text & CTA */}
           <div className="text-white space-y-8">
+            {/* Language Switcher */}
+            <div className="flex justify-start">
+              <LanguageSwitcher currentLanguage={currentLanguage} onLanguageChange={onLanguageChange} />
+            </div>
+            
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight text-white font-bold">
-                沉浸式語音導覽<br />
-                探索龍門閉鎖陣地
+                {t.heroTitle.split('<br />').map((line, i) => (
+                  <div key={i} className="whitespace-nowrap">{line}</div>
+                ))}
               </h1>
               <p className="text-lg md:text-xl text-gray-200">
-                下載 App，即可邊走邊聽，深入了解歷史故事
+                {t.heroDescription}
               </p>
             </div>
 
@@ -38,33 +49,79 @@ export function HeroSection({ backgroundImage }: HeroSectionProps) {
               <Button 
                 size="lg" 
                 className="bg-black hover:bg-gray-900 text-white px-8 py-6 gap-3"
+                asChild
               >
-                <Apple className="w-6 h-6" />
-                <div className="text-left">
-                  <div className="text-xs opacity-90">下載於</div>
-                  <div>App Store</div>
-                </div>
+                <a href={t.appStoreLink} target="_blank" rel="noopener noreferrer">
+                  <Apple className="w-6 h-6" />
+                  <div className="text-left">
+                    <div className="text-xs opacity-90">{t.downloadOnAppStore}</div>
+                    <div>{t.appStore}</div>
+                  </div>
+                </a>
               </Button>
               <Button 
                 size="lg" 
                 className="bg-[#5C6F3E] hover:bg-[#4A5A32] text-white px-8 py-6 gap-3"
+                asChild
               >
-                <Download className="w-6 h-6" />
-                <div className="text-left">
-                  <div className="text-xs opacity-90">下載於</div>
-                  <div>Google Play</div>
-                </div>
+                <a href={t.googlePlayLink} target="_blank" rel="noopener noreferrer">
+                  <Download className="w-6 h-6" />
+                  <div className="text-left">
+                    <div className="text-xs opacity-90">{t.downloadOnAppStore}</div>
+                    <div>{t.googlePlay}</div>
+                  </div>
+                </a>
               </Button>
             </div>
 
-            {/* App Screenshot */}
-            <div className="flex items-center gap-6 pt-4">
-              <div className="relative">
+            {/* App Screenshots */}
+            <div className="flex items-center gap-4 pt-4 overflow-x-auto">
+              {/* App Entry */}
+              <div className="relative flex-shrink-0">
                 <div className="relative w-20 md:w-24 bg-gray-900 rounded-[1.5rem] md:rounded-[2rem] p-2 shadow-xl">
                   <div className="bg-white rounded-[1rem] md:rounded-[1.5rem] overflow-hidden">
                     <img 
                       src="/assets/images/app_entry.png" 
                       alt="龍門閉鎖陣地語音導覽 App"
+                      className="w-full h-auto"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* App Maps */}
+              <div className="relative flex-shrink-0">
+                <div className="relative w-20 md:w-24 bg-gray-900 rounded-[1.5rem] md:rounded-[2rem] p-2 shadow-xl">
+                  <div className="bg-white rounded-[1rem] md:rounded-[1.5rem] overflow-hidden">
+                    <img 
+                      src="/assets/images/app_maps.png" 
+                      alt="地圖導覽"
+                      className="w-full h-auto"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* App Sights */}
+              <div className="relative flex-shrink-0">
+                <div className="relative w-20 md:w-24 bg-gray-900 rounded-[1.5rem] md:rounded-[2rem] p-2 shadow-xl">
+                  <div className="bg-white rounded-[1rem] md:rounded-[1.5rem] overflow-hidden">
+                    <img 
+                      src="/assets/images/app_sights.png" 
+                      alt="景點介紹"
+                      className="w-full h-auto"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* App Langs */}
+              <div className="relative flex-shrink-0">
+                <div className="relative w-20 md:w-24 bg-gray-900 rounded-[1.5rem] md:rounded-[2rem] p-2 shadow-xl">
+                  <div className="bg-white rounded-[1rem] md:rounded-[1.5rem] overflow-hidden">
+                    <img 
+                      src="/assets/images/app_langs.png" 
+                      alt="多語言支援"
                       className="w-full h-auto"
                     />
                   </div>

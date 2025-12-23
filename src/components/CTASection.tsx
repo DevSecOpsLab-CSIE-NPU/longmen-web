@@ -1,11 +1,13 @@
 import { Apple, Download } from 'lucide-react';
 import { Button } from './ui/button';
+import { translations } from '../i18n/translations';
 
 interface CTASectionProps {
   backgroundImage: string;
+  translations: typeof translations.zh;
 }
 
-export function CTASection({ backgroundImage }: CTASectionProps) {
+export function CTASection({ backgroundImage, translations: t }: CTASectionProps) {
   return (
     <section className="relative py-32 overflow-hidden">
       {/* Background */}
@@ -21,11 +23,14 @@ export function CTASection({ backgroundImage }: CTASectionProps) {
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl md:text-5xl text-white mb-6">
-          立即下載，開始你的<br />
-          龍門閉鎖陣地軍史之旅
+          {t.ctaTitle.split('<br />').map((line, i) => (
+            <div key={i}>{line}</div>
+          ))}
         </h2>
         <p className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto">
-          免費下載，讓歷史在耳邊重現。準備好您的耳機，踏上這段充滿故事的探索之旅。
+          {t.ctaDescription.split('<br />').map((line, i) => (
+            <div key={i}>{line}</div>
+          ))}
         </p>
 
         {/* Download Buttons */}
@@ -33,22 +38,28 @@ export function CTASection({ backgroundImage }: CTASectionProps) {
           <Button 
             size="lg" 
             className="bg-white hover:bg-gray-100 text-gray-900 px-8 py-6 gap-3 shadow-xl"
+            asChild
           >
-            <Apple className="w-6 h-6" />
-            <div className="text-left">
-              <div className="text-xs opacity-70">下載於</div>
-              <div>App Store</div>
-            </div>
+            <a href={t.appStoreLink} target="_blank" rel="noopener noreferrer">
+              <Apple className="w-6 h-6" />
+              <div className="text-left">
+                <div className="text-xs opacity-70">{t.downloadOnAppStore}</div>
+                <div>{t.appStore}</div>
+              </div>
+            </a>
           </Button>
           <Button 
             size="lg" 
             className="bg-black hover:bg-gray-900 text-white px-8 py-6 gap-3 shadow-xl"
+            asChild
           >
-            <Download className="w-6 h-6" />
-            <div className="text-left">
-              <div className="text-xs opacity-90">下載於</div>
-              <div>Google Play</div>
-            </div>
+            <a href={t.googlePlayLink} target="_blank" rel="noopener noreferrer">
+              <Download className="w-6 h-6" />
+              <div className="text-left">
+                <div className="text-xs opacity-90">{t.downloadOnAppStore}</div>
+                <div>{t.googlePlay}</div>
+              </div>
+            </a>
           </Button>
         </div>
       </div>
