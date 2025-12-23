@@ -11,9 +11,9 @@ export default function App() {
   const t = translations[language];
 
   // Background images from Unsplash
-  const heroBackground = 'assets/images/heroBackground.jpeg';
-  const experienceImage = 'assets/images/experienceImage.jpeg';
-  const ctaBackground = 'assets/images/ctaBackground.jpg';
+  const heroBackground = '/assets/images/heroBackground.jpeg';
+  const experienceImage = '/assets/images/experienceImage.jpeg';
+  const ctaBackground = '/assets/images/ctaBackground.jpg';
 
   return (
     <div className="min-h-screen bg-white">
