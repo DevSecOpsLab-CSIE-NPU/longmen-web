@@ -39,6 +39,9 @@ jobs:
       - name: 建置專案
         run: npm run build
 
+      - name: 列出建置目錄內容
+        run: ls -la dist/
+
       - name: 設定 GitHub Pages
         uses: actions/configure-pages@v4
 
